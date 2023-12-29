@@ -1,12 +1,11 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Breadcrumb, Layout, Menu, theme } from "antd";
+import {  Layout, Menu } from "antd";
 
 export default function SiteHeader() {
   const navigater = useNavigate();
-  const navigate = useNavigate();
   const login_info = localStorage.getItem("login_token");
-  const { Header, Content, Footer, Sider } = Layout;
+  const { Header } = Layout;
 
   const logOut = () => {
     localStorage.removeItem("login_token");
@@ -18,11 +17,11 @@ export default function SiteHeader() {
   return (
     <>
       <Header
-        className="header"
+        className="logo header"
         style={{ display: "flex", justifyContent: "space-between" }}
       >
-        <div className="logo text-light">Learning Logo</div>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]} />
+        <h4 className="pt-3">Assessment</h4>
+        <Menu mode="horizontal" defaultSelectedKeys={["2"]} />
         {login_info ? (
           <button
             className="btn btn-danger float-right"

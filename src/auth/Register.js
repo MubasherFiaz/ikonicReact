@@ -2,16 +2,15 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input , message } from "antd";
 import axios from "axios";
 import { OnRegister } from "../apis/AuthApis";
 
 export default function Register() {
+  const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
-  const onFinish = (values) => {
-    OnRegister(values);
-    return;
-    console.log("Success:", values.email);
+  const onFinish = async(values) => {
+
     const formData = new FormData();
 
     formData.append("email", values.email);
@@ -21,12 +20,25 @@ export default function Register() {
     axios
       .post(`http://127.0.0.1:8000/api/register`, formData)
       .then(({ data }) => {
-        console.log(data); //setisLoggedIn(true);
-        localStorage.setItem("login_token", data.success.token);
-        navigate("/dashboard");
+        if (data.response!=402) {
+          localStorage.setItem("login_token", JSON.stringify(data));
+          messageApi.open({
+            type: "success",
+            content: "FeedBack is added",
+          });
+          navigate("/feedback");
+        } else {
+          messageApi.open({
+            type: "error",
+            content: 'Email Already Exist',
+          });
+        }
       })
       .catch(({ response }) => {
-        console.log("error");
+        messageApi.open({
+          type: "error",
+          content: response,
+        });
       });
   };
   const onFinishFailed = (errorInfo) => {
@@ -34,6 +46,7 @@ export default function Register() {
   };
   return (
     <>
+       {contextHolder}
      <div
         style={{
           height: "100vh",

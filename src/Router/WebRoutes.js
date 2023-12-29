@@ -1,20 +1,17 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
   useNavigate,
   Routes,
   Route,
-  Link,
 } from "react-router-dom";
 
 import { useState, useEffect } from "react";
 import Protected from "./Protected";
 import LoginRedirect from "./LoginRedirect";
-import Dashoard from "../pages/Dashoard";
+import Feedback from "../pages/Feedback";
 import Login from "../auth/Login";
 import Register from "../auth/Register";
 import MainLayout from "../layout/MainLayout";
-import Data from "../pages/Data";
 function WebRoutes(props) {
   const [isLoggedIn, setisLoggedIn] = useState(null);
   const navigate = useNavigate();
@@ -47,9 +44,7 @@ function WebRoutes(props) {
           element={
             <Protected isLoggedIn={login_info}>
               <MainLayout>
-                            
-                <Dashoard />
-                           
+                <Feedback />
               </MainLayout>
             </Protected>
           }
@@ -65,32 +60,16 @@ function WebRoutes(props) {
         />
         <Route
           exact
-          path="/dashboard"
+          path="/feedback"
           element={
             <Protected isLoggedIn={login_info}>
-               
               <MainLayout>
-                            
-                <Dashoard />
-                           
+                <Feedback />
               </MainLayout>
             </Protected>
           }
         />
-        <Route
-          exact
-          path="/data"
-          element={
-            <Protected isLoggedIn={login_info}>
-               
-              <MainLayout>
-                            
-                <Data />
-                           
-              </MainLayout>
-            </Protected>
-          }
-        />
+       
         <Route exact path="/register" element={<Register />} />
       </Routes>
     </>

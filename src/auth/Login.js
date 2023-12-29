@@ -2,21 +2,24 @@ import * as React from "react";
 import { Button, Checkbox, Form, Input, message } from "antd";
 import { onLogin } from "../apis/AuthApis";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { useNavigate } from 'react-router-dom';
 export default function Login() {
   const [messageApi, contextHolder] = message.useMessage();
+  const navigate = useNavigate();
   const onFinishFailed = (errorInfo) => {
     console.log("Failed:", errorInfo);
   };
 
   const onFinish = async (values) => {
     let loginResponse = await onLogin(values);
-    console.log("response", loginResponse);
 
     if (loginResponse === "error") {
       messageApi.open({
         type: "warning",
         content: "Invalid Login Details",
       });
+    }else{
+      navigate('/feedback');
     }
   };
 

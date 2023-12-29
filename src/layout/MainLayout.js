@@ -1,6 +1,5 @@
 import React from "react";
 import { Breadcrumb, Layout, Menu, theme } from "antd";
-import SidebarMenu from "./SidebarMenu";
 import SiteHeader from "./SiteHeader";
 const { Content, Footer, Sider } = Layout;
 
@@ -9,7 +8,7 @@ const MainLayout = ({ children }) => {
     token: { colorBgContainer },
   } = theme.useToken();
   return (
-    <Layout style={{ top: "-25px", position: "relative" }}>
+    <Layout >
       <SiteHeader />
       <Content
         style={{
@@ -22,18 +21,11 @@ const MainLayout = ({ children }) => {
             background: colorBgContainer,
           }}
         >
-          <Sider
-            style={{
-              background: colorBgContainer,
-            }}
-            width={200}
-          >
-            <SidebarMenu />
-          </Sider>
+          
           <Content
             style={{
               padding: "0 24px",
-              minHeight: 280,
+              minHeight: '60vh',
             }}
           >
             {children}
@@ -45,7 +37,7 @@ const MainLayout = ({ children }) => {
           textAlign: "center",
         }}
       >
-        Learning Portal
+        Assessment
       </Footer>
     </Layout>
   );

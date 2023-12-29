@@ -1,0 +1,83 @@
+.feedbackContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .pageTitle {
+    font-size: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .feedbackList {
+    display: grid;
+    gap: 15px;
+  }
+  
+  .feedbackItem {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .feedbackTitle {
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+  
+  .feedbackDescription {
+    color: #333;
+  }
+  
+  .feedbackCategory {
+    margin-top: 10px;
+  }
+  
+  .commentEditor {
+    margin-top: 10px;
+  }
+  
+  .submitButton {
+    display: flex;
+    margin-top: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  
+
+  .commentList {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .commentItem {
+    border-bottom: 1px solid #eee;
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .commentContent {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .commentUser {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .commentText {
+    font-size: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .commentDateTime {
+    font-size: 12px;
+    
+    color: #888;
+  }
